@@ -1,0 +1,30 @@
+{
+  "name": "meleeframedata",
+  "version": "1.0.0",
+  "description": "Post SSBM Frame Data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dawnvt/MeleeFrameDataBot.git"
+  },
+  "keywords": [
+    "discord.js",
+    "ssbm",
+    "melee",
+    "smash",
+    "melee"
+  ],
+  "author": "Dawn, Lillie",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/dawnvt/MeleeFrameDataBot/issues"
+  },
+  "homepage": "https://github.com/dawnvt/MeleeFrameDataBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  }
+}
