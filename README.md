@@ -11,7 +11,7 @@ Head on into the **Bot** tab and create a bot account - This account has a Bot T
 
 You'll need [Node.JS 14.15.5](https://nodejs.org/en/) or later. Run **npm install** to install dependencies for the bot.
 
-Make a **.env** file and put your token in with:
+Edit the **.env** file and put your token in with:
 
 discord_token = [botToken]  
 prefix = [botPrefix]
