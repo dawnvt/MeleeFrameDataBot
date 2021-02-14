@@ -1,9 +1,20 @@
 require('dotenv').config()
 
+const sqlite3 = require('sqlite3').verbose();
 const Discord = require('discord.js');
 const fs = require('fs');
 
+/// Imports .env vars
+const token = process.env.discord_token
+const prefix = process.env.prefix
+
 const client = new Discord.Client();
+
+/// Default Discord.JS example logging code
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./Commands').filter(file => file.endsWith('.js'));
@@ -11,18 +22,9 @@ for (const file of commandFiles)
 {
   const command = require(`./Commands/${file}`);
 
-  //this makes a new item int eh collection Commands
+  //this makes a new item in the collection Commands
   client.commands.set(command.name, command);
 }
-
-/// Imports .env vars
-const token = process.env.discord_token
-const prefix = process.env.prefix
-
-/// Default Discord.JS example logging code
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
 
 /// Commandhandler - Handles prefix usage
 client.on('message', msg => {
@@ -41,8 +43,6 @@ try {
 }
 
 });
-
-
 
 /// Default Discord.JS example log-on code
 client.login(token);
