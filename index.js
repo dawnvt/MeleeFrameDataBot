@@ -1,7 +1,19 @@
 require('dotenv').config()
 
 const Discord = require('discord.js');
+const fs = require('fs');
+
 const client = new Discord.Client();
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./Commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles)
+{
+  const command = require(`./Commands/${file}`);
+
+  //this makes a new item int eh collection Commands
+  client.commands.set(command.name, command);
+}
 
 /// Imports .env vars
 const token = process.env.discord_token
@@ -14,11 +26,23 @@ client.on('ready', () => {
 
 /// Commandhandler - Handles prefix usage
 client.on('message', msg => {
-  if (!msg.content.startsWith(prefix) || message.author.bot) return;
+  if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
+
+  if (!client.commands.has(command)) return;
+
+try {
+	client.commands.get(command).execute(msg, args);
+} catch (error) {
+	console.error(error);
+	msg.reply('There was an error trying to execute that command!');
+}
+
 });
+
+
 
 /// Default Discord.JS example log-on code
 client.login(token);
