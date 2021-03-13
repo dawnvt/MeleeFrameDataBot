@@ -16,6 +16,6 @@ Edit the **.env** file and put your token in with:
 discord_token = [botToken]  
 prefix = [botPrefix]
 
-Get the characters.db from the [meleeWebProcject](https://github.com/mitchhit234/meleeWebProject) and put it in the **./db/** folder - You'll have to make this folder.  
+Get the characters.db from the [meleeWebProject](https://github.com/mitchhit234/meleeWebProject) and put it in the **./db/** folder - You'll have to make this folder.  
 
 Use the command **node index.js** to run the discord bot. 
